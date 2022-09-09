@@ -1,0 +1,6 @@
+/.idea/
+/out/
+/ITMO.iml
+*/.idea/
+*/out/
+*/*.iml
