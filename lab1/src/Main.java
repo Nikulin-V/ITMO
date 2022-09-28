@@ -45,7 +45,7 @@ public class Main {
         for (int i = 0; i < arr.length; i++) {
             System.out.print("[");
             for (int j = 0; j < arr[0].length; j++) {
-                System.out.printf("%.4f; ", arr[i][j]);
+                System.out.printf("%9.4f;", arr[i][j]);
             }
             System.out.println("]");
         }
