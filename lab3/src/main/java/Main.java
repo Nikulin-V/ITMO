@@ -1,7 +1,8 @@
-import absclasses.Character;
-import classes.*;
-import enums.Gender;
-import enums.Tone;
+package main.java;
+
+import main.java.enums.Gender;
+import main.java.enums.Tone;
+import main.java.classes.*;
 
 public class Main {
     public static void main(String[] args) {

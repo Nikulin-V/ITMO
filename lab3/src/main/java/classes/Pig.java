@@ -1,7 +1,7 @@
-package classes;
+package main.java.classes;
 
-import absclasses.Character;
-import enums.Gender;
+import main.java.absclasses.Character;
+import main.java.enums.Gender;
 
 public class Pig extends Character {
     public Pig(String name, Gender gender) {

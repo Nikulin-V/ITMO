@@ -1,6 +1,7 @@
-package classes;
+package main.java.classes;
 
-import absclasses.Furniture;
+
+import main.java.absclasses.Furniture;
 
 public class Buffet extends Furniture {
     public Buffet(String name) {

@@ -1,7 +1,7 @@
-package classes;
+package main.java.classes;
 
-import absclasses.Character;
-import absclasses.Place;
+import main.java.absclasses.Character;
+import main.java.absclasses.Place;
 
 public class Building extends Place {
     protected Character owner;

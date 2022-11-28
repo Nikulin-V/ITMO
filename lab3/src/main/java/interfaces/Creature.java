@@ -1,9 +1,8 @@
-package interfaces;
+package main.java.interfaces;
 
-import absclasses.Place;
-import enums.Tone;
+import main.java.absclasses.Place;
+import main.java.enums.Tone;
 
-;
 
 public interface Creature {
     void move(Entity entity);

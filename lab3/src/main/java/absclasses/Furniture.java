@@ -1,6 +1,6 @@
-package absclasses;
+package main.java.absclasses;
 
-import interfaces.Entity;
+import main.java.interfaces.Entity;
 
 import java.util.Objects;
 
@@ -16,7 +16,6 @@ public abstract class Furniture implements Entity {
         this.material = material;
     }
 
-    @Override
     public String getName() {
         return name;
     }

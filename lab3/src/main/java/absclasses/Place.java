@@ -1,6 +1,6 @@
-package absclasses;
+package main.java.absclasses;
 
-import interfaces.Entity;
+import main.java.interfaces.Entity;
 
 import java.util.Arrays;
 import java.util.Objects;
