@@ -1,41 +1,44 @@
 package main.java.absclasses;
 
-import main.java.interfaces.Entity;
+import main.java.interfaces.Entitiable;
 
 import java.util.Arrays;
 import java.util.Objects;
 
-abstract public class Place implements Entity {
+abstract public class Place implements Entitiable {
     protected String name;
-    protected Entity[] objects;
+    protected Entitiable[] objects;
 
     public Place(String name) {
         this.name = name;
-        this.objects = new Entity[0];
+        this.objects = new Entitiable[0];
     }
 
-    @Override
     public String getName() {
         return this.name;
     }
 
-    public Entity[] getObjects() {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Entitiable[] getObjects() {
         return this.objects;
     }
 
-    public void addObject(Entity entity) {
-        Entity[] oldObjects = this.objects;
-        this.objects = new Entity[oldObjects.length + 1];
+    public void addObject(Entitiable entity) {
+        Entitiable[] oldObjects = this.objects;
+        this.objects = new Entitiable[oldObjects.length + 1];
         System.arraycopy(oldObjects, 0, this.objects, 0, oldObjects.length);
         this.objects[oldObjects.length] = entity;
     }
 
-    public void removeObject(Entity entity) {
+    public void removeObject(Entitiable entity) {
         boolean containsEntity = Arrays.asList(this.objects).contains(entity);
         if (containsEntity) {
             this.objects = Arrays.stream(this.objects)
                     .filter(element -> !element.equals(entity))
-                    .toArray(Entity[]::new);
+                    .toArray(Entitiable[]::new);
         }
     }
 

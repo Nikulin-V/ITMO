@@ -1,10 +1,10 @@
 package main.java.absclasses;
 
-import main.java.interfaces.Entity;
+import main.java.interfaces.Entitiable;
 
 import java.util.Objects;
 
-public abstract class Furniture implements Entity {
+public abstract class Furniture implements Entitiable {
     protected String name;
     protected String material;
 
@@ -19,6 +19,8 @@ public abstract class Furniture implements Entity {
     public String getName() {
         return name;
     }
+
+    public void setName(String name) {this.name = name;}
 
     public String getMaterial() {
         return material;

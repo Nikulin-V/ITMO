@@ -1,18 +1,24 @@
 package main.java;
 
+import main.java.classes.Character;
+import main.java.classes.*;
+import main.java.classes.builders.CharacterBuilder;
+import main.java.classes.builders.CharacterEngineer;
 import main.java.enums.Gender;
 import main.java.enums.Tone;
-import main.java.classes.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        Bear pooh = new Bear("Пух", Gender.MALE);
-        Pig piglet = new Pig("Пятачок", Gender.MALE);
-        Human christopherRobin = new Human("Кристофер Робин", Gender.MALE);
-        Tiger tigger = new Tiger("Тигра", Gender.MALE);
-        Kangaroo kanga = new Kangaroo("Кенга", Gender.FEMALE);
-        Kangaroo roo = new Kangaroo("Крошка Ру", Gender.MALE);
+        CharacterBuilder builder = new CharacterBuilder();
+        CharacterEngineer engineer = new CharacterEngineer(builder);
+
+        Character pooh = engineer.manufactureCharacter("Пух", Gender.MALE);
+        Character piglet = engineer.manufactureCharacter("Пятачок", Gender.MALE);
+        Character christopherRobin = engineer.manufactureCharacter("Кристофер Робин", Gender.MALE);
+        Character tigger = engineer.manufactureCharacter("Тигра", Gender.MALE);
+        Character kanga = engineer.manufactureCharacter("Кенга", Gender.FEMALE);
+        Character roo = engineer.manufactureCharacter("Крошка Ру", Gender.MALE);
         
         Building house = new Building("дом", kanga);
         Buffet buffet = new Buffet("буфет");

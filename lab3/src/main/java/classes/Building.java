@@ -1,6 +1,5 @@
 package main.java.classes;
 
-import main.java.absclasses.Character;
 import main.java.absclasses.Place;
 
 public class Building extends Place {
