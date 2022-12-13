@@ -1,18 +1,19 @@
 package main.java.classes;
 
-import main.java.absclasses.Character;
 import main.java.enums.Gender;
 
 public class Bear extends Character {
+    private String color;
+
     public Bear(String name, Gender gender) {
         super(name, gender);
     }
 
-    public String toString() {
-        return "<" + this.getName() + " (Bear)>";
+    public String getColor() {
+        return color;
     }
 
-    public boolean equals(Object obj) {
-        return super.equals(obj) && obj instanceof Bear;
+    public void setColor(String color) {
+        this.color = color;
     }
 }
