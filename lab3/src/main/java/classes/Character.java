@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Character implements Creaturable, Entitiable {
     protected String name;
     protected Gender gender;
-    protected Entitiable isNear;
+    protected Entitiable near;
 
     public Character() {
         super();
@@ -31,11 +31,11 @@ public class Character implements Creaturable, Entitiable {
     }
 
     public void move(Entitiable entity) {
-        if (this.isNear != entity) {
+        if (this.near != entity) {
             String words = this.gender == Gender.MALE ? "подошёл к" : "подошла к";
             System.out.println(this.getName() + " " +  words + " " + entity.getName());
         }
-        this.isNear = entity;
+        this.near = entity;
     }
 
     public void hug(Entitiable entity) {
@@ -93,7 +93,7 @@ public class Character implements Creaturable, Entitiable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, gender, isNear);
+        return Objects.hash(name, gender, near);
     }
 
     @Override
@@ -101,7 +101,7 @@ public class Character implements Creaturable, Entitiable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Character character = (Character) o;
-        return Objects.equals(name, character.name) && gender == character.gender && Objects.equals(isNear, character.isNear);
+        return Objects.equals(name, character.name) && gender == character.gender && Objects.equals(near, character.near);
     }
 
     @Override
