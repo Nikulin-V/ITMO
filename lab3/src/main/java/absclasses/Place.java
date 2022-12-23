@@ -1,5 +1,6 @@
 package main.java.absclasses;
 
+import main.java.exceptions.ObjectNotFoundException;
 import main.java.interfaces.Entitiable;
 
 import java.util.Arrays;
@@ -33,13 +34,14 @@ abstract public class Place implements Entitiable {
         this.objects[oldObjects.length] = entity;
     }
 
-    public void removeObject(Entitiable entity) {
+    public void removeObject(Entitiable entity) throws ObjectNotFoundException {
         boolean containsEntity = Arrays.asList(this.objects).contains(entity);
         if (containsEntity) {
             this.objects = Arrays.stream(this.objects)
                     .filter(element -> !element.equals(entity))
                     .toArray(Entitiable[]::new);
-        }
+        } else
+            throw new ObjectNotFoundException(this, entity);
     }
 
     @Override

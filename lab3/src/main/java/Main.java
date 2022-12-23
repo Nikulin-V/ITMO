@@ -1,32 +1,52 @@
 package main.java;
 
+import main.java.classes.Buffet;
+import main.java.classes.Building;
 import main.java.classes.Character;
-import main.java.classes.*;
+import main.java.classes.Tiger;
 import main.java.classes.builders.CharacterBuilder;
 import main.java.classes.builders.CharacterEngineer;
 import main.java.enums.Gender;
 import main.java.enums.Tone;
+import main.java.exceptions.CantBeHuggedException;
+import main.java.exceptions.EnvironmentVariableNotFoundException;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws EnvironmentVariableNotFoundException {
 
         CharacterBuilder builder = new CharacterBuilder();
         CharacterEngineer engineer = new CharacterEngineer(builder);
 
-        Character pooh = engineer.manufactureCharacter("Пух", Gender.MALE);
+        String bearNameEnv = "BEAR_NAME";
+        if (System.getenv(bearNameEnv) == null)
+            throw new EnvironmentVariableNotFoundException(bearNameEnv);
+
+        Character pooh = engineer.manufactureCharacter(System.getenv(bearNameEnv), Gender.MALE);
         Character piglet = engineer.manufactureCharacter("Пятачок", Gender.MALE);
         Character christopherRobin = engineer.manufactureCharacter("Кристофер Робин", Gender.MALE);
-        Character tigger = engineer.manufactureCharacter("Тигра", Gender.MALE);
+        Tiger tigger = new Tiger("Тигра", Gender.MALE);
         Character kanga = engineer.manufactureCharacter("Кенга", Gender.FEMALE);
         Character roo = engineer.manufactureCharacter("Крошка Ру", Gender.MALE);
         
         Building house = new Building("дом", kanga);
         Buffet buffet = new Buffet("буфет");
 
+        for (int i = 0; i < 3; i++) {
+            tigger.jump(Tone.CHEERFULLY);
+            tigger.say("Сюда идти?", christopherRobin);
+        }
+
+        house.addObject(christopherRobin);
+        tigger.move(house);
+
         pooh.move(christopherRobin);
         piglet.move(christopherRobin);
-        pooh.hug(christopherRobin);
-        piglet.hug(christopherRobin);
+        try {
+            pooh.hug(christopherRobin);
+            piglet.hug(christopherRobin);
+        } catch (CantBeHuggedException e) {
+            System.out.println(e.getMessage());
+        }
         pooh.tell(christopherRobin, "в чём дело");
 
         pooh.enter(house);
@@ -44,5 +64,10 @@ public class Main {
                 Tone.AFFECTIONATELY
         );
         kanga.understand("хотя с виду Тигра очень большой, он так же нуждается в ласке, как и Крошка Ру");
+
+        for (int potId = 0; potId < buffet.pots.length; potId++) {
+            tigger.stick(tigger.getBodyPart(), buffet.pots[potId]);
+        }
+        tigger.checkFoodFound();
     }
 }

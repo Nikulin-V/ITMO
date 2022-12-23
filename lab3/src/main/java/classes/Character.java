@@ -3,6 +3,7 @@ package main.java.classes;
 import main.java.absclasses.Place;
 import main.java.enums.Gender;
 import main.java.enums.Tone;
+import main.java.exceptions.CantBeHuggedException;
 import main.java.interfaces.Creaturable;
 import main.java.interfaces.Entitiable;
 
@@ -38,7 +39,10 @@ public class Character implements Creaturable, Entitiable {
         this.near = entity;
     }
 
-    public void hug(Entitiable entity) {
+    public void hug(Entitiable entity) throws CantBeHuggedException {
+        if (!(entity instanceof Character))
+            throw new CantBeHuggedException(this, entity);
+
         this.move(entity);
         String words = this.gender == Gender.MALE ? "обнял" : "обняла";
         System.out.println(this.getName() + " " + words + " " + entity.getName());
@@ -89,6 +93,16 @@ public class Character implements Creaturable, Entitiable {
     public void understand(String thought) {
         String words = this.gender == Gender.MALE ? "подумал" : "подумала";
         System.out.println(this.getName() + " " + words + ": " + thought);
+    }
+
+    public void jump() {
+        String word = this.gender == Gender.MALE ? "прыгал" : "прыгала" ;
+        System.out.println(this.getName() + " " + word);
+    }
+
+    public void jump(Tone tone) {
+        String word = this.gender == Gender.MALE ? "прыгнул" : "прыгнула" ;
+        System.out.println(this.getName() + " " + tone + " " + word);
     }
 
     @Override
